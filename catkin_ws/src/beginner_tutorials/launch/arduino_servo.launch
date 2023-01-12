@@ -1,0 +1,11 @@
+<launch>
+
+        <node name="rosserial_python" type="serial_node.py" pkg="rosserial_python" output="screen">
+                <param name="port" value="/dev/ttyACM0"/>
+                <param name="baud" value="200000"/>
+        </node>
+
+        <node name="servo_node"  type="servo_node"    pkg="beginner_tutorials"/>
+
+
+</launch>

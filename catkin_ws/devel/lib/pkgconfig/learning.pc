@@ -1,0 +1,8 @@
+prefix=/home/isaac/Isaac/ROS/catkin_ws/devel
+
+Name: learning
+Description: Description of learning
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

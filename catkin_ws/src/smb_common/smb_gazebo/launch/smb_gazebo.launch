@@ -12,7 +12,7 @@
   <arg name="enable_ekf"                            default="true"/>
 
   <!-- Name of the world -->
-  <arg name="world"                                 default="empty"/>
+  <arg name="world"                                 default="singlePillar"/>
   <!-- Path to the world file -->
   <arg name="world_file"                            default="$(find smb_gazebo)/worlds/$(arg world).world"/>
   <arg name="laser_enabled"							            default="true"/>

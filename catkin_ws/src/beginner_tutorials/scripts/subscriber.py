@@ -67,16 +67,6 @@ def call_odom(msg_odom):
     theta_euler =  get_angle(theta)+90
     #print(theta_euler)
 
-def husky_to_odom_frame(point):
-    pub_point = rospy.Publisher('new_point',PointStamped,queue_size=1)
-    new_point = PointStamped()
-    listener = tf.TransformListener()
-    listener.waitForTransform("rslidar", "odom",rospy.Time.now(), rospy.Duration(4.0))
-    while not rospy.is_shutdown():
-            now = rospy.Time.now()
-            listener.waitForTransform("/rslidar", "/odom", now, rospy.Duration(4.0))
-            new_point = listener.transformPoint('odom',point)
-            pub_point.publish(new_point)
 
 def control(actual_point,destination_point):
     error_x = 0.0
@@ -96,7 +86,6 @@ while not rospy.is_shutdown():
     angle = get_angle(rad_angle)
     get_point(rad_angle,vector[1])
     pub_point.publish(goal)
-    #print(goal)
-    #husky_to_odom_frame(goal)
+
 rospy.spin()
 

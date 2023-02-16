@@ -5,6 +5,7 @@ from math import pi, cos, sin
 from geometry_msgs.msg import PointStamped, Twist
 from nav_msgs.msg import Odometry
 from std_msgs.msg import String
+from tf.transformations import euler_from_quaternion
 
 class Robot:
     def __init__(self):
@@ -12,7 +13,7 @@ class Robot:
         self.angle_grad = 0.0
         self.distance = 0.0
         self.laser_data = None
-        self.odom_msg = None
+        self.odom_msg = Odometry()
         self.point = PointStamped()
         self.vel_msg = Twist()
         self.order = String()
@@ -39,7 +40,7 @@ class Robot:
         self.angle_rad = obstacle_angle
         self.distance = max_distance
         self.pub.publish("i found the obstacle")
-        return self.angle_rad, self.distance
+        #return self.angle_rad, self.distance
     
     def get_euler_angle(self):
         self.angle_grad = (self.angle_rad * 180)/pi
@@ -52,24 +53,28 @@ class Robot:
     
     def go_to_point(self):
         pub = rospy.Publisher("/cmd_vel", Twist,queue_size=1)
-        self.vel_msg.angular.z = 0.75
-        if self.vel_msg is None:  
-            return None 
+        rot_q = self.odom_msg.pose.pose.orientation
+        (roll, pitch, theta) = euler_from_quaternion([rot_q.x,rot_q.y,rot_q.z,rot_q.w])
+        error = self.angle_rad - theta
+        print(error)
+        if error <= 0.1:
+            self.vel_msg.angular.z = 0.0
+        else:
+            self.vel_msg.angular.z = 0.3
         pub.publish(self.vel_msg)
+        
         
 
 rospy.init_node("obstacle_detector")
 robot = Robot()
+robot.get_obstacle_point()
+robot.get_euler_angle()
+print(robot.angle_grad,robot.angle_rad)
 rate = rospy.Rate(10) # 10 Hz
 
 while not rospy.is_shutdown():
-    robot.get_obstacle_point()
-    #angle, distance = obstacle_point
-    #robot.get_euler_angle()
-    #robot.get_point()
-    #robot.go_to_point()
-    #print(robot.point)
-    print("Obstacle detected at angle: {:.2f} radians, distance: {:.2f} m".format(robot.angle_rad, robot.distance))
+    robot.go_to_point()
+    #print("Obstacle detected at angle: {:.2f} radians, distance: {:.2f} m".format(robot.angle_rad, robot.distance))
     rate.sleep()
 
 rospy.spin()

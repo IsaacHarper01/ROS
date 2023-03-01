@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import rospy
 from sensor_msgs.msg import LaserScan
-from geometry_msgs.msg import Point, PointStamped 
+from geometry_msgs.msg import PointStamped 
 from nav_msgs.msg import Odometry
 from math import sin, cos, atan2
 import tf

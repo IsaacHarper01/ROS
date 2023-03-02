@@ -33,14 +33,14 @@ class Robot:
             factor = 0.2
             img = cv.resize(img,(int(img.shape[1]*factor),int(img.shape[0]*factor)),interpolation=cv.INTER_AREA)
         gray = cv.cvtColor(self.crop(img),cv.COLOR_BGR2GRAY)
-        blur = cv.blur(gray,(7,7))
+        blur = cv.blur(gray,(2,2))
         edges = cv.Canny(blur,150,150)
         self.img_shape = gray.shape
         self.image = blur
         return edges
     
     def crop(self,img):
-        crop_factor = 0.3
+        crop_factor = 0.4
         heigth1 = (img.shape[0]/2) - (img.shape[0]*crop_factor)
         heigth2 = (img.shape[0]/2) + (img.shape[0]*crop_factor)
         width1 = (img.shape[1]/2) - (img.shape[1]*crop_factor)  
@@ -56,7 +56,9 @@ class Robot:
             x1, y1, x2, y2 = line[0]
             slope = (y2-y1)/(x2-x1)
             print(slope)
-            if slope < 2 and slope > -2 :
+            if slope < 0.15 and slope > -0.15:
+                if slope == 0:
+                    continue
                 self.slopes.append(slope)
             if slope < 0.2 and slope > -0.2 :
                 X1.append(x1)

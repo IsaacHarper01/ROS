@@ -2,4 +2,4 @@
 source_root_dir = '/home/isaac/Isaac/ROS/catkin_ws/src'
 whitelisted_packages = ''.split(';') if '' != '' else []
 blacklisted_packages = ''.split(';') if '' != '' else []
-underlay_workspaces = '/home/isaac/Isaac/ROS/catkin_ws/devel;/home/isaac/catkin_ws/devel;/opt/ros/melodic'.split(';') if '/home/isaac/Isaac/ROS/catkin_ws/devel;/home/isaac/catkin_ws/devel;/opt/ros/melodic' != '' else []
+underlay_workspaces = '/home/isaac/catkin_ws/devel;/opt/ros/melodic'.split(';') if '/home/isaac/catkin_ws/devel;/opt/ros/melodic' != '' else []

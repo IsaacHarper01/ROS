@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/isaac/Isaac/ROS/catkin_ws/src/beginner_tutorials/src/subscriber.cpp" "/home/isaac/Isaac/ROS/catkin_ws/build/beginner_tutorials/CMakeFiles/scan_subscriber_node.dir/src/subscriber.cpp.o"
+  "/home/isaac/Isaac/ROS/catkin_ws/src/beginner_tutorials/src/subscriber_husky.cpp" "/home/isaac/Isaac/ROS/catkin_ws/build/beginner_tutorials/CMakeFiles/scan_subscriber_node.dir/src/subscriber_husky.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

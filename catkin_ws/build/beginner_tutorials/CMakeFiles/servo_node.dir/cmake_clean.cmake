@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/servo_node.dir/src/topic.cpp.o"
+  "CMakeFiles/servo_node.dir/src/topic_servo.cpp.o"
   "/home/isaac/Isaac/ROS/catkin_ws/devel/lib/beginner_tutorials/servo_node.pdb"
   "/home/isaac/Isaac/ROS/catkin_ws/devel/lib/beginner_tutorials/servo_node"
 )

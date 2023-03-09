@@ -78,7 +78,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/isaac/Isaac/ROS/catkin_ws/devel/lib/python2.7/dist-packages/rosserial_arduino" FILES_MATCHING REGEX "/home/isaac/Isaac/ROS/catkin_ws/devel/lib/python2.7/dist-packages/rosserial_arduino/.+/__init__.pyc?$")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/isaac/Isaac/ROS/catkin_ws/devel/lib/python2.7/dist-packages/rosserial_arduino" FILES_MATCHING REGEX "/home/isaac/Isaac/ROS/catkin_ws/devel/lib/python2\\.7/dist-packages/rosserial_arduino/.+/__init__.pyc?$")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
